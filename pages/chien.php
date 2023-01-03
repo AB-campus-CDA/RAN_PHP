@@ -3,15 +3,16 @@
 
 
 <?php
-$title = "page 2";
+$title = "chien";
 $nav = $title;
 require 'components/header.php';
 // include opening body
 ?>
 
 <main>
-    <H1>THE PAGE 2</H1>
+    <H1>THE PAGE SUR LES CHIENS</H1>
     <p> ceci est la <?php echo $title; ?> !</p>
+    <p>Le chien aboie, ronge des os et rapporte la baballe.</p>
 </main>
 
 

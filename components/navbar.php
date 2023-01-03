@@ -11,13 +11,13 @@
                     <a class="nav-link <?php if($nav==='index') {echo "active";} ?>" href="../index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='chat') {echo "active";} ?>" href="?page=chat">Page un</a>
+                    <a class="nav-link <?php if($nav==='chat') {echo "active";} ?>" href="?page=chat">Chat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='chien') {echo "active";} ?>" href="?page=chien">Page deux</a>
+                    <a class="nav-link <?php if($nav==='chien') {echo "active";} ?>" href="?page=chien">Chien</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='tortue') {echo "active";} ?>" href="?page=tortue">Page trois</a>
+                    <a class="nav-link <?php if($nav==='tortue') {echo "active";} ?>" href="?page=tortue">Tortue</a>
                 </li>
             </ul>
             <form role="search">
