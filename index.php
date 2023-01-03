@@ -11,12 +11,15 @@ if (isset($_GET["page"])) {
         case 'tortue':
             include 'pages/tortue.php';
             break;
+        case 'contact':
+            include 'pages/contact.php';
+            break;
         default:
             include 'pages/404.php';
             break;
     }
 } else {
-    switch ($_SERVER['REQUEST_URI']) {
+/*    switch ($_SERVER['REQUEST_URI']) {
         case '/chat':
             include 'pages/chat.php';
             break;
@@ -26,9 +29,9 @@ if (isset($_GET["page"])) {
         case '/tortue':
             include 'pages/tortue.php';
             break;
-        default:
+        default:*/
             include 'pages/home.php';
-            break;
-    }
+/*            break;
+    }*/
 }
 

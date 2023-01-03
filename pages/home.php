@@ -15,6 +15,9 @@ require 'components/header.php';
     <p>version <em>Front Controller</em></p>
 </main>
 
+<pre>
+            <?php print_r($_SERVER); ?>
+        </pre>
 
 <?php
 require 'components/footer.php';

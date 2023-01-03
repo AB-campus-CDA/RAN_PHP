@@ -10,9 +10,10 @@ require 'components/header.php';
 ?>
 
 <main>
-    <H1>THE PAGE SUR LES TORTUE</H1>
+    <H1>THE PAGE SUR LES TORTUES</H1>
     <p> ceci est la <?php echo $title; ?> !</p>
     <p>La tortue a une carapace. Elle peut vivre très longtemps ,sauf si elle mange des déchets humains.</p>
+    <img src="../images/tortue.jpg" alt="Une tortue lutte" >
 </main>
 
 

@@ -1,3 +1,19 @@
+<?php
+function nav_item(string $lien, string $titre): string
+{
+  $class = 'nav-link';
+  if (str_replace(".", "", $_SERVER['REQUEST_URI']) === str_replace(".", "", $lien)) {
+      $class .= ' active';
+  }
+  return <<<HTML
+        <li class="nav-item">
+            <a class="$class" href="$lien">$titre</a>
+        </li>
+HTML;
+
+}
+?>
+
 <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
     <div class="container-fluid">
         <a class="navbar-brand" href="accouille">EXO RAN PHP</a>
@@ -7,18 +23,11 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='index') {echo "active";} ?>" href="../index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='chat') {echo "active";} ?>" href="?page=chat">Chat</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='chien') {echo "active";} ?>" href="?page=chien">Chien</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if($nav==='tortue') {echo "active";} ?>" href="?page=tortue">Tortue</a>
-                </li>
+                <?php echo nav_item("../index.php", "Accueil"); ?>
+                <?php echo nav_item("/index.php?page=chat", "Chat"); ?>
+                <?php echo nav_item("/index.php?page=chien", "Chien"); ?>
+                <?php echo nav_item("/index.php?page=tortue", "Tortue"); ?>
+
             </ul>
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
