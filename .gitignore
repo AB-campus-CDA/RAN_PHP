@@ -1,3 +1,5 @@
 .idea
 messages
-~.idea
+sessions
+php.xml
+*.xml
