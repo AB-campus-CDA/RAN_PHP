@@ -1,6 +1,6 @@
 <?php
 
-//var_dump($_POST);
+var_dump($_SESSION);
 
 $form_is_valid = false;
 $data = "";
@@ -13,7 +13,7 @@ $validationSchema = [
     // to passive inputs : htmlentities($input)
     'civilite' => [FILTER_VALIDATE_REGEXP, ["regexp"=>$civReg]],
     'lastname' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^[a-zA-Z-']{2,30}$/"]],
-    'firstname' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^[a-zA-Z-']{2,30}$/"]],
+    'firstname' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^[a-zéèA-Z-']{2,30}$/"]],
     'email' => [FILTER_VALIDATE_EMAIL, null],
     'raison' => [FILTER_VALIDATE_REGEXP, ["regexp"=>$raisonReg]],
     'message' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^.{5,500}$/"]]
@@ -37,6 +37,9 @@ if (count($_POST) > 0 ) {
     foreach ($validationSchema as $key => $value) {
         if (filter_input(INPUT_POST, $key, $value[0], $value[1] ? array("options"=>$value[1]) : null )) {
             $data .= $key . " : " . $_POST[$key] . "\n";
+
+            // add session
+            $_SESSION['form'][$key] = $_POST[$key];
         } else {
             $form_is_valid = false;
             array_push($errors, $errorMessages[$key]);

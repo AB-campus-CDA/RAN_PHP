@@ -3,8 +3,17 @@
 
 
 <?php
+echo session_save_path();
+session_start();
+
+$message = "<p>Vous n'etes pas loggé, rdv en page de contact</p>";
+
+if (isset($_SESSION['form']['firstname'])) {
+    $name = $_SESSION['form']['firstname'];
+    $message = "<p>Vous etes loggé en tant que $name</p>";
+}
+
 $title = "EXO RAN PHP";
-$nav = "index";
 require 'components/header.php';
 // include opening body
 ?>
@@ -13,6 +22,8 @@ require 'components/header.php';
     <H1>MA PAGE INDEX</H1>
     <p> ceci est la page d'accueil !</p>
     <p>version <em>Front Controller</em></p>
+    <br>
+    <?php echo $message ?>
 </main>
 
 <pre>

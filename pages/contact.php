@@ -3,6 +3,8 @@
 
 
 <?php
+session_start();
+
 $title = "contact";
 $nav = $title;
 require 'components/header.php';
