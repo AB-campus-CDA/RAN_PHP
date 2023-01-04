@@ -11,7 +11,9 @@ require 'components/header.php';
 ?>
 
 <main>
-    <H1>404</H1>
+    <div class="container d-flex vh-100 justify-content-center align-items-center">
+        <H1 class="">404</H1>
+    </div>
 </main>
 
 
