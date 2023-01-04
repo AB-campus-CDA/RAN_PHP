@@ -11,12 +11,12 @@ if (!isset($errors)) {
 
 $validationSchema = [
     // to passive inputs : htmlentities($input)
-    'civilite' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/(^M\.$|^Mme$)/"]],
+    'civilite' => [FILTER_VALIDATE_REGEXP, ["regexp"=>$civReg]],
     'lastname' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^[a-zA-Z-']{2,30}$/"]],
     'firstname' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^[a-zA-Z-']{2,30}$/"]],
     'email' => [FILTER_VALIDATE_EMAIL, null],
-    'raison' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/(^job$|^presta$|^info$)/"]],
-    'message' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^.{15,500}$/"]]
+    'raison' => [FILTER_VALIDATE_REGEXP, ["regexp"=>$raisonReg]],
+    'message' => [FILTER_VALIDATE_REGEXP, ["regexp"=>"/^.{5,500}$/"]]
 ];
 
 $errorMessages = [
@@ -25,12 +25,12 @@ $errorMessages = [
     'firstname' => "Entrez votre prénom",
     'email' => "Votre email ne semble pas valide",
     'raison' => "Indiquez la raison de votre message",
-    'message' => "Veuillez laisser un message entre 15 et 500 caractères"
+    'message' => "Veuillez laisser un message entre 5 et 500 caractères"
 ];
 
 
 // if form already submited
-if (count($_POST) === 6 ) {
+if (count($_POST) > 0 ) {
     $form_is_valid = true;
 
     // check received data validity

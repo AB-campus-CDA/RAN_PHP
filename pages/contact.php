@@ -12,14 +12,19 @@ require 'components/header.php';
 
 <?php
 $errors = [];
-require "functions/handleForm.php" ?>
+
+require "models/civilites.php";
+require "models/raisons.php";
+
+require "functions/handleForm.php";
+?>
 
 
 <main>
     <H1>Formulaire de contact</H1>
 
     <div class="container">
-        <form class="form-group p-1 rounded" action="/?page=contact" method="POST">
+        <form class="border p-1 rounded" action="/?page=contact" method="POST">
 
             <!-- show list of errors -->
             <?php if (count($errors)) {
@@ -31,52 +36,54 @@ require "functions/handleForm.php" ?>
                     <?php
                 }
             }?>
-            <div class="my-2 form-control">
-                <label for="civilite">Civilité :</label>
-                <select name="civilite">
-                    <option value="M."  <?php if (htmlentities($_POST['civilite']) ==='M.') { echo "selected"; } ?> >M.</option>
-                    <option value="Mme" <?php if (htmlentities($_POST['civilite']) ==='Mme') { echo "selected"; } ?> >Mme</option>
+
+            <!-- civilite -->
+            <div class="input-group my-3">
+                <label for="civilite" class="input-group-text">Civilité :</label>
+                <select name="civilite" class="form-select" id="civilite">
+                    <option value="">Sélection</option>
+                    <?php
+                    foreach($civList as $civ) {
+                        echo "<option value='$civ' ". (htmlentities($_POST["civilite"]) === $civ ? " selected" : null) . ">$civ</option>";
+                    }
+                    ?>
                 </select>
             </div>
 
-            <div class="my-2 form-control">
-                <label for="lastname">Nom :</label>
-                <input type="text" name="lastname" value="<?php echo htmlentities($_POST['lastname']); ?>">
+            <div class="input-group my-3">
+                <label for="lastname" class="input-group-text">Nom :</label>
+                <input type="text" name="lastname" id="lastname" value="<?php echo htmlentities($_POST['lastname']); ?>" class="form-control">
             </div>
 
-            <div class="my-2 form-control">
-                <label for="firstname">Prénom :</label>
-                <input type="text" name="firstname" value="<?php echo htmlentities($_POST['firstname']); ?>">
+            <div class="input-group my-3">
+                <label for="firstname" class="input-group-text">Prénom :</label>
+                <input type="text" name="firstname" id="firstname" value="<?php echo htmlentities($_POST['firstname']); ?>" class="form-control">
             </div>
 
-            <div class="my-2 form-control">
-                <label for="email">Email :</label>
-                <input type="email" name="email" value="<?php echo htmlentities($_POST['email']); ?>">
+            <div class="input-group my-3">
+                <label for="email" class="input-group-text">Email :</label>
+                <input type="email" name="email" id="email" value="<?php echo htmlentities($_POST['email']); ?>" class="form-control">
             </div>
 
-            <div class="my-2 form-control">
-                <fieldset name="raison">
-                    <div class="mb-2">
-                        <label for="job">Proposition d'emploi</label>
-                        <input type="radio" id="job" name="raison" value="job" <?php if (htmlentities($_POST['raison']) ==='job') { echo "checked"; } ?> >
-                    </div>
-
-                    <div class="mb-2">
-                        <label for="info">Demande d'infos</label>
-                        <input type="radio" id="info" name="raison" value="info" <?php if (htmlentities($_POST['raison']) ==='info') { echo "checked"; } ?> >
-                    </div>
-
-
-                    <label for="presta">Prestation</label>
-                    <input type="radio" id="presta" name="raison" value="presta" <?php if (htmlentities($_POST['raison']) ==='presta') { echo "checked"; } ?> >
+            <div class="my-3 ">
+                <fieldset name="raison" class="form-group">
+                    <?php
+                    foreach($raisonList as $key => $raison) {
+                        echo "<div class='form-check mb-2'>";
+                            echo "<input class='form-check-input' type='radio' id='$key' name='raison' value='$key'".
+                                (htmlentities($_POST["raison"]) === $key ? " checked" : null).">";
+                            echo "<label class='form-check-label' for='$key'>$raison</label>";
+                        echo "</div>";
+                    }
+                    ?>
                 </fieldset>
             </div>
 
-            <div class="my-2 form-control">
+            <div class="my-3">
                 <p>
                     <label for="message">Message :</label>
                 </p>
-                <textarea name="message" id="message" rows="4"
+                <textarea name="message" id="message" rows="4" class="w-100"
                           placeholder="Votre message ici"
                 ><?php echo htmlentities($_POST['message']); ?></textarea>
             </div>
