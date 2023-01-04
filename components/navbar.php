@@ -27,6 +27,7 @@ HTML;
                 <?php echo nav_item("/index.php?page=chat", "Chat"); ?>
                 <?php echo nav_item("/index.php?page=chien", "Chien"); ?>
                 <?php echo nav_item("/index.php?page=tortue", "Tortue"); ?>
+                <?php echo nav_item("/index.php?page=contact", "Contact"); ?>
 
             </ul>
             <form role="search">

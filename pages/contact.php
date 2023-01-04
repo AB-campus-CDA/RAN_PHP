@@ -13,9 +13,9 @@ require 'components/header.php';
     <H1>Formulaire de contact</H1>
 
     <div class="container">
-        <form class="border p-3 rounded">
+        <form class="border p-3 rounded form" action="/?page=contact" method="POST">
             <div class="my-2">
-                <label for="civilie">Civilité :</label>
+                <label for="civilite">Civilité :</label>
                 <select name="civilite">
                     <option value="M." >M.</option>
                     <option value="Mme" >Mme</option>
@@ -62,12 +62,16 @@ require 'components/header.php';
                 <textarea name="message" id="message" rows="4" ></textarea>
             </div>
 
-            <input type="submit" value="Envoyer">
+            <button type="submit" class="btn btn-primary" >Envoyer</button>
 
         </form>
 
+
+        <?php require "functions/handleForm.php" ?>
+
         <pre>
-            <?php print_r($_SERVER); ?>
+            <?php print_r($_GET); ?>
+            <?php print_r($_POST); ?>
         </pre>
     </div>
 </main>
